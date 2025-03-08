@@ -1,27 +1,20 @@
 ---
-import Layout from '../layouts/Layout.astro';
-
-// Import components
-import Hero from '../components/home/Hero.astro';
+import BaseLayout from "../layouts/BaseLayout.astro";  
+import Hero from "../components/home/Hero.astro";
 import Services from '../components/home/Services.astro';
 import Technologies from '../components/home/Technologies.astro';
 import Testimonials from '../components/home/Testimonials.astro';
 import FeaturedProjects from '../components/home/FeaturedProjects.astro';
 import TechScroll from '../components/home/TechScroll.astro';
 import KeyPerformance from '../components/home/KeyPerformance.astro';
-
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+import Testing from "../components/home/Testing.astro";
 ---
-
-<Layout title="NexusGold | Elegant Digital Solutions">
-	<main>
-		<Hero />
-		<TechScroll />
-		<KeyPerformance />
-		<Services />
-		<Technologies />
-		<Testimonials />
-		<FeaturedProjects />
-	</main>
-</Layout>
+<BaseLayout>
+    <Hero />
+    <TechScroll />
+    <Services />
+    <Technologies />
+    <Testimonials />
+    <FeaturedProjects />
+    <KeyPerformance />
+</BaseLayout>
