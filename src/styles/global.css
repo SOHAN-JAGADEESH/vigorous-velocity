@@ -21,6 +21,14 @@
     @apply font-heading;
     font-family: 'Roboto', sans-serif;
   }
+
+  /* Add gradient span style for consistent dual-color headings */
+  .gradient-text {
+    background: linear-gradient(to bottom, #D4AF37 0%, #8B7355 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
 }
 
 @layer components {
@@ -45,11 +53,180 @@
   }
   
   .section-title {
-    @apply text-3xl md:text-4xl lg:text-5xl font-bold mb-8 text-white relative inline-block;
+    @apply text-5xl md:text-7xl font-light mb-4 relative inline-block w-full text-center;
+    background: linear-gradient(165deg, #FFFFFF 0%, #FFFFFF 60%, #D4AF37 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
   }
+
+  .hero-title {
+    @apply text-6xl md:text-8xl font-light mb-4 relative inline-block w-full text-center;
+    background: linear-gradient(165deg, #FFFFFF 0%, #FFFFFF 60%, #D4AF37 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* === Removing default button style === */
+.hero-btn {
+  margin: 0;
+  height: auto;
+  background: transparent;
+  padding: 0;
+  border: none;
+  cursor: pointer;
+  position: relative;
+  letter-spacing: 3px;
+  text-decoration: none;
+  font-size: 1.4em; /* adjust as needed */
+  font-family: "Roboto";
+  text-transform: uppercase;
+  color: transparent;
+  -webkit-text-stroke: 1px rgba(255, 255, 255, 0.9);
+}
+
+/* Hero button hover text */
+.hero-btn-hover-text {
+  position: absolute;
+  box-sizing: border-box;
+  color: #D4AF37; /* updated site accent color */
+  width: 0%;
+  inset: 0;
+  border-right: 6px solid #D4AF37;
+  overflow: hidden;
+  transition: 0.5s;
+  -webkit-text-stroke: 1px #D4AF37;
+  white-space: nowrap;
+}
+
+/* Hover effect */
+.hero-btn:hover .hero-btn-hover-text {
+  width: 100%;
+  filter: drop-shadow(0 0 23px #D4AF37);
+}
+
+/* Base button styles */
+button {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+  outline: none;
+  border: 0;
+  vertical-align: middle;
+  text-decoration: none;
+  background: transparent;
+  padding: 0;
+  font-size: inherit;
+  font-family: inherit;
+}
+
+/* Hero Learn More Button Container */
+button.hero-learn-more {
+  width: 12rem;
+  height: auto;
+}
+
+/* The square element that expands on hover */
+button.hero-learn-more .square {
+  transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
+  box-shadow: 0 0 5px 1px #D4AF37;
+  position: relative;
+  display: block;
+  margin: 0;
+  width: 2rem;
+  height: 2rem;
+  background: #d4af3700;
+  border-radius: 0.33rem; /* initial slight rounding */
+}
+
+/* The icon inside the square */
+button.hero-learn-more .square .icon {
+  transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  background: #fff;
+}
+
+/* Arrow icon specifics (scaled proportionally) */
+button.hero-learn-more .square .icon.arrow {
+  transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
+  left: 0.42rem;
+  width: 0.75rem;
+  height: 0.08rem;
+  background: none;
+}
+
+button.hero-learn-more .square .icon.arrow::before {
+  position: absolute;
+  content: "";
+  top: -0.19rem;
+  right: 0.04rem;
+  width: 0.42rem;
+  height: 0.42rem;
+  border-top: 0.08rem solid #fff;
+  border-right: 0.08rem solid #ffffff;
+  transform: rotate(45deg);
+}
+
+/* Button text styling (vertically centered using flex) */
+button.hero-learn-more .button-text {
+  transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: 0 0 0 1.2rem;  /* adjusted for the smaller square */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(255, 255, 255, 0.74);
+  font-weight: 700;
+  line-height: 1.6;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+/* Hover Effects */
+button.hero-learn-more:hover .square {
+  width: 82%;
+  border-radius: 0.17rem; /* reduced rounding on expansion */
+  box-shadow: 0 0 10px 2px #D4AF37;
+}
+
+button.hero-learn-more:hover .button-text {
+  transform: translate(-1.7rem, 0);
+  color: #D4AF37;
+}
+
+/* Adjusted arrow movement on hover/active */
+button.hero-learn-more:hover .square .icon.arrow {
+  background: #D4AF37;
+  transform: translate(8rem, 0);
+}
+
+button.hero-learn-more:active .square .icon.arrow {
+  transform: translate(6.9rem, 0);
+  transition: all 0.3s;
+}
+
+button.hero-learn-more:hover .square .icon.arrow::before {
+  border-top-color: #D4AF37;
+  border-right-color: #D4AF37;
+}
+
+button.hero-learn-more:active .square {
+  transform: scale(0.9);
+  transition: all 0.3s;
+  box-shadow: 0 0 5px 0.5px #D4AF37;
+}
+
+button.hero-learn-more:active .button-text {
+  color: rgb(255, 255, 255);
+}
+
   
-  .section-title::after {
-    content: '';
-    @apply absolute -bottom-2 left-0 w-1/2 h-1 bg-accent rounded-full;
-  }
 }
