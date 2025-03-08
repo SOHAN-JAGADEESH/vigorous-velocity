@@ -1,13 +1,13 @@
 <header class="fixed w-full z-50 transition-all duration-300 flex justify-center" id="main-header">
-	<div class="container transition-all duration-300 px-6 py-4 max-w-[95%]" id="header-container">
+	<div class="container transition-all duration-300 px-6 py-2 max-w-[95%] mt-4" id="header-container">
 		<div class="flex justify-between items-center">
 			<!-- Logo and Company Name -->
 			<a href="/" class="flex items-center space-x-3">
-				<img src="/logo.svg" alt="AVM Nexus Logo" class="h-10 w-10" />
-				<div>
+				<img src="/AV_logo.jpg" alt="AVM Nexus Logo" class="h-10 w-15" />
+				<!-- <div>
 					<span class="text-2xl font-heading font-bold text-accent">AVM</span>
 					<span class="text-2xl font-heading font-bold text-white">NEXUS</span>
-				</div>
+				</div> -->
 			</a>
 
 			<!-- Navigation Links - Centered -->
@@ -44,6 +44,10 @@
 	#main-header {
 		background-color: rgba(0, 0, 0, 0.8);
 		backdrop-filter: blur(8px);
+	}
+	
+	:root {
+		--accent-color: 255, 215, 0; /* Gold color in RGB */
 	}
 	
 	/* Contact Button Styles */
@@ -103,15 +107,15 @@
 				// Scrolled state
 				header.style.backgroundColor = 'rgba(0, 0, 0, 0.9)';
 				headerContainer.style.borderRadius = '0.75rem';
-				headerContainer.style.boxShadow = '0 8px 15px -2px rgba(var(--accent-color), 0.2), 0 0 8px -2px rgba(var(--accent-color), 0.1)';
-				headerContainer.style.marginTop = '0.5rem';
+				headerContainer.style.boxShadow = '0 6px 15px -2px rgba(var(--accent-color), 0.2), 0 0 8px -2px rgba(var(--accent-color), 0.1)';
+				headerContainer.style.marginTop = '1rem';
 				headerContainer.style.border = '1px solid rgba(var(--accent-color), 0.3)';
 			} else {
 				// Top state
 				header.style.backgroundColor = 'rgba(0, 0, 0, 0.8)';
 				headerContainer.style.borderRadius = '0.75rem';
 				headerContainer.style.boxShadow = 'none';
-				headerContainer.style.marginTop = '0.5rem';
+				headerContainer.style.marginTop = '1rem';
 				headerContainer.style.border = 'none';
 			}
 		});
@@ -120,8 +124,8 @@
 		if (window.scrollY > 50) {
 			header.style.backgroundColor = 'rgba(0, 0, 0, 0.9)';
 			headerContainer.style.borderRadius = '0.75rem';
-			headerContainer.style.boxShadow = '0 8px 15px -2px rgba(var(--accent-color), 0.2), 0 0 8px -2px rgba(var(--accent-color), 0.1)';
-			headerContainer.style.marginTop = '0.5rem';
+			headerContainer.style.boxShadow = '0 6px 15px -2px rgba(var(--accent-color), 0.2), 0 0 8px -2px rgba(var(--accent-color), 0.1)';
+			headerContainer.style.marginTop = '1rem';
 			headerContainer.style.border = '1px solid rgba(var(--accent-color), 0.3)';
 		}
 	});
