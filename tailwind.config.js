@@ -21,8 +21,22 @@ module.exports = {
         }
       },
       fontFamily: {
-        sans: ['Inter', 'sans-serif'],
-        heading: ['Montserrat', 'sans-serif'],
+        sans: ['Roboto', 'sans-serif'],
+        heading: ['Roboto', 'sans-serif'],
+      },
+      fontSize: {
+        'h1': 'var(--fs-h1)',
+        'h2': 'var(--fs-h2)',
+        'h3': 'var(--fs-h3)',
+        'h4': 'var(--fs-h4)',
+        'h5': 'var(--fs-h5)',
+        'h6': 'var(--fs-h6)',
+      },
+      fontWeight: {
+        light: 300,
+        regular: 400,
+        medium: 500,
+        bold: 700,
       },
       boxShadow: {
         'gold': '0 4px 14px 0 rgba(212, 175, 55, 0.3)',
