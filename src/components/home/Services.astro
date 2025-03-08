@@ -11,14 +11,14 @@
             <p class="text-gray-400 mt-6 text-lg">We offer a comprehensive range of digital services to help your business thrive in the digital landscape.</p>
         </div>
         
-        <!-- Services Horizontal Scroll Container -->
+        <!-- Services Carousel Container -->
         <div class="services-container relative">
             <!-- Visible height container -->
-            <div class="services-viewport h-[80vh] relative overflow-hidden">
-                <!-- Horizontal scrolling wrapper -->
-                <div class="services-scroll-wrapper flex snap-x snap-mandatory overflow-x-scroll hide-scrollbar pointer-events-none">
+            <div class="services-viewport h-[80vh] relative">
+                <!-- Card stack container -->
+                <div class="services-stack relative w-full h-full flex justify-center items-center">
                     <!-- Service 1 -->
-                    <div class="service-card min-w-full snap-center px-4 flex-shrink-0">
+                    <div class="service-card absolute transition-all duration-500">
                         <div class="card group h-full flex flex-col max-w-4xl mx-auto">
                             <div class="w-20 h-20 bg-accent/20 rounded-2xl flex items-center justify-center mb-8 group-hover:bg-accent/30 transition-all duration-300">
                                 <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -45,7 +45,7 @@
                     </div>
                     
                     <!-- Service 2 -->
-                    <div class="service-card min-w-full snap-center px-4 flex-shrink-0">
+                    <div class="service-card absolute transition-all duration-500">
                         <div class="card group h-full flex flex-col max-w-4xl mx-auto">
                             <div class="w-20 h-20 bg-accent/20 rounded-2xl flex items-center justify-center mb-8 group-hover:bg-accent/30 transition-all duration-300">
                                 <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -72,7 +72,7 @@
                     </div>
                     
                     <!-- Service 3 -->
-                    <div class="service-card min-w-full snap-center px-4 flex-shrink-0">
+                    <div class="service-card absolute transition-all duration-500">
                         <div class="card group h-full flex flex-col max-w-4xl mx-auto">
                             <div class="w-20 h-20 bg-accent/20 rounded-2xl flex items-center justify-center mb-8 group-hover:bg-accent/30 transition-all duration-300">
                                 <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -100,7 +100,7 @@
                     </div>
                     
                     <!-- Service 4 -->
-                    <div class="service-card min-w-full snap-center px-4 flex-shrink-0">
+                    <div class="service-card absolute transition-all duration-500">
                         <div class="card group h-full flex flex-col max-w-4xl mx-auto">
                             <div class="w-20 h-20 bg-accent/20 rounded-2xl flex items-center justify-center mb-8 group-hover:bg-accent/30 transition-all duration-300">
                                 <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -127,7 +127,7 @@
                     </div>
                     
                     <!-- Service 5 -->
-                    <div class="service-card min-w-full snap-center px-4 flex-shrink-0">
+                    <div class="service-card absolute transition-all duration-500">
                         <div class="card group h-full flex flex-col max-w-4xl mx-auto">
                             <div class="w-20 h-20 bg-accent/20 rounded-2xl flex items-center justify-center mb-8 group-hover:bg-accent/30 transition-all duration-300">
                                 <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -154,7 +154,7 @@
                     </div>
                     
                     <!-- Service 6 -->
-                    <div class="service-card min-w-full snap-center px-4 flex-shrink-0">
+                    <div class="service-card absolute transition-all duration-500">
                         <div class="card group h-full flex flex-col max-w-4xl mx-auto">
                             <div class="w-20 h-20 bg-accent/20 rounded-2xl flex items-center justify-center mb-8 group-hover:bg-accent/30 transition-all duration-300">
                                 <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -212,48 +212,77 @@
     
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            const servicesWrapper = document.querySelector('.services-scroll-wrapper');
             const serviceCards = document.querySelectorAll('.service-card');
             const prevButton = document.querySelector('.nav-prev');
             const nextButton = document.querySelector('.nav-next');
             
-            if (!servicesWrapper || !serviceCards.length || !prevButton || !nextButton) return;
+            if (!serviceCards.length || !prevButton || !nextButton) return;
             
             let currentIndex = 0;
+            const totalCards = serviceCards.length;
+            
+            // Function to update card positions
+            const updateCards = () => {
+                serviceCards.forEach((card, index) => {
+                    // Remove all position classes
+                    card.classList.remove('active', 'prev', 'next', 'back', 'hidden-card');
+                    
+                    // Calculate relative position
+                    const position = (index - currentIndex + totalCards) % totalCards;
+                    
+                    // Apply appropriate class based on position
+                    if (position === 0) {
+                        card.classList.add('active');
+                    } else if (position === 1 || position === (totalCards - 1)) {
+                        card.classList.add(position === 1 ? 'next' : 'prev');
+                        card.addEventListener('click', () => {
+                            goToSlide(position === 1 ? 
+                                (currentIndex + 1) % totalCards : 
+                                (currentIndex - 1 + totalCards) % totalCards);
+                        }, { once: true });
+                    } else if (position === 2 || position === (totalCards - 2)) {
+                        card.classList.add('back');
+                    } else {
+                        card.classList.add('hidden-card');
+                    }
+                });
+                
+                // Update button states
+                prevButton.disabled = false;
+                nextButton.disabled = false;
+            };
             
             // Go to specific slide
             const goToSlide = (index) => {
-                if (index < 0) index = 0;
-                if (index >= serviceCards.length) index = serviceCards.length - 1;
-                
                 currentIndex = index;
-                
-                // Scroll to the card
-                serviceCards[index].scrollIntoView({ behavior: 'smooth', inline: 'start' });
-                
-                // Update button states
-                prevButton.disabled = index === 0;
-                prevButton.classList.toggle('opacity-50', index === 0);
-                nextButton.disabled = index === serviceCards.length - 1;
-                nextButton.classList.toggle('opacity-50', index === serviceCards.length - 1);
+                updateCards();
             };
             
             // Handle navigation buttons
-            prevButton.addEventListener('click', () => goToSlide(currentIndex - 1));
-            nextButton.addEventListener('click', () => goToSlide(currentIndex + 1));
+            prevButton.addEventListener('click', () => {
+                currentIndex = (currentIndex - 1 + totalCards) % totalCards;
+                updateCards();
+            });
+            
+            nextButton.addEventListener('click', () => {
+                currentIndex = (currentIndex + 1) % totalCards;
+                updateCards();
+            });
             
             // Handle keyboard navigation
             document.addEventListener('keydown', (e) => {
-                if (e.key === 'ArrowLeft') goToSlide(currentIndex - 1);
-                if (e.key === 'ArrowRight') goToSlide(currentIndex + 1);
+                if (e.key === 'ArrowLeft') {
+                    currentIndex = (currentIndex - 1 + totalCards) % totalCards;
+                    updateCards();
+                }
+                if (e.key === 'ArrowRight') {
+                    currentIndex = (currentIndex + 1) % totalCards;
+                    updateCards();
+                }
             });
             
-            // Initialize button states
-            prevButton.disabled = true;
-            prevButton.classList.add('opacity-50');
-            
-            // Set initial slide
-            goToSlide(0);
+            // Initialize the carousel
+            updateCards();
         });
     </script>
 </section>
@@ -263,18 +292,29 @@
     .hide-scrollbar {
         -ms-overflow-style: none;  /* IE and Edge */
         scrollbar-width: none;  /* Firefox */
-        overflow: hidden !important; /* Prevent scroll interaction */
     }
     
     .hide-scrollbar::-webkit-scrollbar {
         display: none;  /* Chrome, Safari and Opera */
     }
     
-    /* Service card hover effect */
+    /* Service card styles */
+    .services-stack {
+        perspective: 2000px;
+    }
+    
+    .service-card {
+        width: 80%;
+        max-width: 800px;
+        border-radius: 16px;
+        background: rgba(30, 41, 59, 0.7);
+        backdrop-filter: blur(10px);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+    }
+    
     .service-card .card {
-        transform: translateY(0);
-        transition: all 0.3s ease;
-        min-height: 45vh; /* Reduced from 65vh by ~30% */
+        min-height: 45vh;
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -282,12 +322,43 @@
         padding: 2rem;
     }
     
-    .service-card .card:hover {
-        transform: translateY(-8px);
+    /* Card positioning classes */
+    .service-card.active {
+        z-index: 30;
+        transform: translateZ(0) translateX(0) scale(1);
+        opacity: 1;
     }
     
-    /* Active pagination dot */
-    .pagination-dot.active {
-        transform: scale(1.2);
+    .service-card.prev {
+        z-index: 20;
+        transform: translateZ(-100px) translateX(-20%) scale(0.9);
+        opacity: 0.7;
+    }
+    
+    .service-card.next {
+        z-index: 20;
+        transform: translateZ(-100px) translateX(20%) scale(0.9);
+        opacity: 0.7;
+    }
+    
+    .service-card.back {
+        z-index: 10;
+        transform: translateZ(-200px) scale(0.8);
+        opacity: 0.5;
+    }
+    
+    .service-card.hidden-card {
+        z-index: 0;
+        transform: translateZ(-300px) scale(0.7);
+        opacity: 0;
+        pointer-events: none;
+    }
+    
+    /* Hover effects */
+    .service-card.prev:hover,
+    .service-card.next:hover {
+        transform: translateZ(-50px) translateX(0) scale(0.95);
+        opacity: 0.9;
+        cursor: pointer;
     }
 </style> 
