@@ -4,21 +4,17 @@
 			<!-- Logo and Company Name -->
 			<a href="/" class="flex items-center space-x-3">
 				<img src="/AV_logo.jpg" alt="AVM Nexus Logo" class="h-10 w-15" />
-				<!-- <div>
-					<span class="text-2xl font-heading font-bold text-accent">AVM</span>
-					<span class="text-2xl font-heading font-bold text-white">NEXUS</span>
-				</div> -->
 			</a>
 
 			<!-- Navigation Links - Centered -->
 			<nav class="hidden md:flex absolute left-1/2 transform -translate-x-1/2 space-x-10">
-				<a href="/" class="text-white hover:text-accent transition-colors font-medium">Home</a>
-				<a href="/about" class="text-white hover:text-accent transition-colors font-medium">About</a>
+				<a href="/" class="text-white hover:text-accent transition-colors font-light text-[0.9rem]">Home</a>
+				<a href="/about" class="text-white hover:text-accent transition-colors font-light text-[0.9rem]">About</a>
 			</nav>
 
 			<!-- Contact Button -->
-			<a href="/contact" class="contact-btn hidden md:inline-block">
-				Contact Us!
+			<a href="/contact" class="contact-btn hidden md:inline-block text-[0.8rem] font-light">
+				Contact Us
 			</a>
 
 			<!-- Mobile Menu Button -->
@@ -32,9 +28,9 @@
 	<!-- Mobile Menu -->
 	<div id="mobile-menu" class="md:hidden hidden bg-primary-dark border-t border-accent/20 absolute w-full">
 		<div class="container mx-auto py-4 flex flex-col space-y-4 px-6">
-			<a href="/" class="text-white hover:text-accent transition-colors">Home</a>
-			<a href="/about" class="text-white hover:text-accent transition-colors">About</a>
-			<a href="/contact" class="text-white hover:text-accent transition-colors">Contact Us</a>
+			<a href="/" class="text-white hover:text-accent transition-colors text-[0.9rem] font-light">Home</a>
+			<a href="/about" class="text-white hover:text-accent transition-colors text-[0.9rem] font-light">About</a>
+			<a href="/contact" class="text-white hover:text-accent transition-colors text-[0.9rem] font-light">Contact Us</a>
 		</div>
 	</div>
 </header>
@@ -52,14 +48,14 @@
 	
 	/* Contact Button Styles */
 	.contact-btn {
-		padding: 10px 20px;
-		border: unset;
-		border-radius: 15px;
+		padding: 8px 18px;
+		border: .5px solid rgba(255, 215, 0, 0.3);
+		border-radius: 12px;
 		color: #FFD700;
 		z-index: 1;
 		background: #000000;
 		position: relative;
-		font-weight: 600;
+		font-weight: 300;
 		font-size: 15px;
 		box-shadow: 4px 8px 19px -3px rgba(0,0,0,0.27);
 		transition: all 250ms;
@@ -73,7 +69,7 @@
 		left: 0;
 		height: 100%;
 		width: 0;
-		border-radius: 15px;
+		border-radius: 12px;
 		background-color: #FFD700;
 		z-index: -1;
 		box-shadow: 4px 8px 19px -3px rgba(0,0,0,0.27);
@@ -82,6 +78,7 @@
 
 	.contact-btn:hover {
 		color: #212121;
+		border-color: transparent;
 	}
 
 	.contact-btn:hover::before {

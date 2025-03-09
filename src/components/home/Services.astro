@@ -180,16 +180,16 @@
                 
                 <!-- Navigation Controls -->
                 <div class="absolute left-0 top-1/2 -translate-y-1/2 z-10">
-                    <button class="nav-prev bg-accent/10 hover:bg-accent/20 text-white p-3 rounded-r-lg transition-all duration-300 focus:outline-none pointer-events-auto">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+                    <button class="nav-control nav-prev">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 19l-7-7 7-7" />
                         </svg>
                     </button>
                 </div>
                 <div class="absolute right-0 top-1/2 -translate-y-1/2 z-10">
-                    <button class="nav-next bg-accent/10 hover:bg-accent/20 text-white p-3 rounded-l-lg transition-all duration-300 focus:outline-none pointer-events-auto">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                    <button class="nav-control nav-next">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 5l7 7-7 7" />
                         </svg>
                     </button>
                 </div>
@@ -295,6 +295,28 @@
         display: none;  /* Chrome, Safari and Opera */
     }
     
+    /* Navigation Controls */
+    .nav-control {
+        width: 40px;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: rgba(255, 255, 255, 0.7);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 50%;
+        background: transparent;
+        backdrop-filter: blur(4px);
+        transition: all 0.3s ease;
+        cursor: pointer;
+    }
+
+    .nav-control:hover {
+        color: #D4AF37;
+        border-color: rgba(212, 175, 55, 0.3);
+        box-shadow: 0 0 10px rgba(212, 175, 55, 0.1);
+    }
+    
     /* Service card styles */
     .services-stack {
         perspective: 2000px;
@@ -304,10 +326,11 @@
         width: 80%;
         max-width: 800px;
         border-radius: 16px;
-        background: rgba(30, 41, 59, 0.7);
+        background: rgba(0, 0, 0, 0.894);
         backdrop-filter: blur(10px);
         box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
         transition: all 2s cubic-bezier(0.23, .8, 0.25, 1), opacity .5s ease;
+        pointer-events: none; /* Disable interactions by default */
     }
     
     .service-card .card {
@@ -324,38 +347,36 @@
         z-index: 30;
         transform: translateZ(0) translateX(0) scale(1);
         opacity: 1;
+        pointer-events: auto; /* Enable interactions only for active card */
     }
     
     .service-card.prev {
         z-index: 20;
         transform: translateZ(-100px) translateX(-20%) scale(0.9);
-        opacity: .5;
+        opacity: .6;
     }
     
     .service-card.next {
         z-index: 20;
         transform: translateZ(-100px) translateX(20%) scale(0.9);
-        opacity: .5;
+        opacity: .6;
     }
     
     .service-card.back {
         z-index: 10;
         transform: translateZ(-200px) scale(0.8);
-        opacity: 0.5;
+        opacity: 0.4;
     }
     
     .service-card.hidden-card {
         z-index: 0;
         transform: translateZ(-300px) scale(0.7);
         opacity: 0;
-        pointer-events: none;
     }
     
-    /* Hover effects */
-    .service-card.prev:hover,
-    .service-card.next:hover {
-        transform: translateZ(-50px) translateX(0) scale(0.95);
-        opacity: 0.9;
-        cursor: pointer;
+    /* Remove hover effects */
+    .service-card.prev,
+    .service-card.next {
+        cursor: default;
     }
 </style> 
