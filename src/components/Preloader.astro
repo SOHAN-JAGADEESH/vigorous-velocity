@@ -1,3 +1,14 @@
+---
+// Get the current URL path from Astro
+const { pathname } = Astro.url;
+const isHomePage = pathname === '/' || pathname === '/index.html';
+
+// Only render the preloader on the home page
+if (!isHomePage) {
+  return null;
+}
+---
+
 <div id="preloader" class="fixed inset-0 z-50 flex items-center justify-center bg-black">
     <div class="preloader-content">
         <!-- Hexagon Loader Animation -->
@@ -196,7 +207,7 @@
         
         <!-- Loading Text -->
         <div class="text-center mt-8">
-            <h2 class="text-white text-xl font-bold">Good things take time</h2>
+            <h2 class="text-white text-xl font-bold">Good Things Take Time</h2>
         </div>
     </div>
 </div>
@@ -226,7 +237,6 @@
     }
 
     .hex-brick {
-        background: #000000;
         width: 30px;
         height: 17px;
         position: absolute;
@@ -240,19 +250,22 @@
     }
 
     .h1 {
-        background: #D4AF37;
+        background: linear-gradient(135deg, #D4AF37, #F5E7A3);
+        box-shadow: 0 0 10px rgba(212, 175, 55, 0.5);
     }
 
     .h2 {
         transform: rotate(60deg);
         -webkit-transform: rotate(60deg);
-        background: #D4AF37;
+        background: linear-gradient(135deg, #D4AF37, #F5E7A3);
+        box-shadow: 0 0 10px rgba(212, 175, 55, 0.5);
     }
 
     .h3 {
         transform: rotate(-60deg);
         -webkit-transform: rotate(-60deg);
-        background: #D4AF37;
+        background: linear-gradient(135deg, #D4AF37, #F5E7A3);
+        box-shadow: 0 0 10px rgba(212, 175, 55, 0.5);
     }
 
     .gel {
@@ -546,31 +559,78 @@
 
     @keyframes fade00 {
         0% {
-            background: #D4AF37;
+            background: linear-gradient(135deg, #D4AF37, #F5E7A3);
+            box-shadow: 0 0 15px rgba(212, 175, 55, 0.7);
         }
 
         50% {
-            background: #8B7D2B;
+            background: linear-gradient(135deg, #8B7D2B, #B39429);
+            box-shadow: 0 0 5px rgba(139, 125, 43, 0.3);
         }
 
         100% {
-            background: #D4AF37;
+            background: linear-gradient(135deg, #D4AF37, #F5E7A3);
+            box-shadow: 0 0 15px rgba(212, 175, 55, 0.7);
         }
+    }
+    
+    @keyframes shimmer {
+        0% {
+            background-position: -200% 0;
+        }
+        100% {
+            background-position: 200% 0;
+        }
+    }
+    
+    .hex-brick {
+        background-size: 200% 100%;
+        animation: fade00 2s infinite, shimmer 3s infinite linear;
     }
 </style>
 
 <script>
-    // Track loading progress
+    // Function to check if hero component is loaded
+    const checkHeroLoaded = () => {
+        const heroElement = document.querySelector('.hero-component'); // Add this class to your hero component
+        
+        if (heroElement && heroElement.querySelector('canvas')) {
+            // Hero with Spline is loaded
     const preloader = document.getElementById('preloader');
-    
-    // Listen for the window load event to complete the loading
-    window.addEventListener('load', () => {
-        // Wait for content to load
-        setTimeout(() => {
-            if (preloader) preloader.classList.add('preloader-fade-out');
-            setTimeout(() => {
-                if (preloader) preloader.style.display = 'none';
+            if (preloader) {
+                preloader.classList.add('preloader-fade-out');
+                setTimeout(() => {
+                    if (preloader) preloader.style.display = 'none';
             }, 500);
-        }, 2000); // Give extra time for everything to initialize
-    });
+        }
+            return true;
+        }
+        return false;
+    };
+    
+    // Check if hero is already loaded
+    if (!checkHeroLoaded()) {
+        // Set a timeout as fallback
+        const maxWaitTime = 5000; // 5 seconds max wait time
+        
+        // Check periodically if hero is loaded
+        const heroCheckInterval = setInterval(() => {
+            if (checkHeroLoaded()) {
+                clearInterval(heroCheckInterval);
+                clearTimeout(fallbackTimeout);
+            }
+        }, 100);
+        
+        // Fallback timeout in case hero detection fails
+        const fallbackTimeout = setTimeout(() => {
+            clearInterval(heroCheckInterval);
+            const preloader = document.getElementById('preloader');
+            if (preloader) {
+                preloader.classList.add('preloader-fade-out');
+        setTimeout(() => {
+                    if (preloader) preloader.style.display = 'none';
+                }, 500);
+            }
+        }, maxWaitTime);
+    }
 </script> 

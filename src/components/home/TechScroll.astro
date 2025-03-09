@@ -1,160 +1,79 @@
 <div class="bg-primary-dark py-12 border-y border-accent/20 overflow-hidden">
+    <!-- Optional title/heading -->
     <div class="container mx-auto px-4 sm:px-6 lg:px-8 mb-6">
-        <p class="text-center text-sm text-gray-500 uppercase tracking-wider font-medium">Trusted by leading technology companies</p>
+      <p class="text-center text-sm text-gray-500 uppercase tracking-wider font-medium">
+        Trusted by leading technology companies
+      </p>
     </div>
-    
-    <div class="tech-scroll-container">
-        <div class="tech-scroll">
-            <!-- First set of logos -->
-            <div class="tech-logo-group">
-                <div class="tech-logo">
-                    <img src="/src/assets/TechScroll/react.svg" alt="React" class="tech-icon">
-                </div>
-                <div class="tech-logo">
-                    <img src="/src/assets/TechScroll/tailwind.svg" alt="Tailwind" class="tech-icon">
-                </div>
-                <div class="tech-logo">
-                    <img src="/src/assets/TechScroll/figma.svg" alt="Figma" class="tech-icon">
-                </div>
-                <div class="tech-logo">
-                    <img src="/src/assets/TechScroll/webflow.svg" alt="Webflow" class="tech-icon">
-                </div>
-                <div class="tech-logo">
-                    <img src="/src/assets/TechScroll/wix.svg" alt="Wix" class="tech-icon">
-                </div>
-            </div>
-            
-            <!-- Second set of logos -->
-            <div class="tech-logo-group">
-                <div class="tech-logo">
-                    <img src="/src/assets/TechScroll/react.svg" alt="React" class="tech-icon">
-                </div>
-                <div class="tech-logo">
-                    <img src="/src/assets/TechScroll/tailwind.svg" alt="Tailwind" class="tech-icon">
-                </div>
-                <div class="tech-logo">
-                    <img src="/src/assets/TechScroll/figma.svg" alt="Figma" class="tech-icon">
-                </div>
-                <div class="tech-logo">
-                    <img src="/src/assets/TechScroll/webflow.svg" alt="Webflow" class="tech-icon">
-                </div>
-                <div class="tech-logo">
-                    <img src="/src/assets/TechScroll/wix.svg" alt="Wix" class="tech-icon">
-                </div>
-            </div>
-        </div>
-        
-        <!-- Duplicate for truly seamless scrolling -->
-        <div class="tech-scroll tech-scroll-duplicate">
-            <!-- First set of logos (duplicate) -->
-            <div class="tech-logo-group">
-                <div class="tech-logo">
-                    <img src="/src/assets/TechScroll/react.svg" alt="React" class="tech-icon">
-                </div>
-                <div class="tech-logo">
-                    <img src="/src/assets/TechScroll/tailwind.svg" alt="Tailwind" class="tech-icon">
-                </div>
-                <div class="tech-logo">
-                    <img src="/src/assets/TechScroll/figma.svg" alt="Figma" class="tech-icon">
-                </div>
-                <div class="tech-logo">
-                    <img src="/src/assets/TechScroll/webflow.svg" alt="Webflow" class="tech-icon">
-                </div>
-                <div class="tech-logo">
-                    <img src="/src/assets/TechScroll/wix.svg" alt="Wix" class="tech-icon">
-                </div>
-            </div>
-            
-            <!-- Second set of logos (duplicate) -->
-            <div class="tech-logo-group">
-                <div class="tech-logo">
-                    <img src="/src/assets/TechScroll/react.svg" alt="React" class="tech-icon">
-                </div>
-                <div class="tech-logo">
-                    <img src="/src/assets/TechScroll/tailwind.svg" alt="Tailwind" class="tech-icon">
-                </div>
-                <div class="tech-logo">
-                    <img src="/src/assets/TechScroll/figma.svg" alt="Figma" class="tech-icon">
-                </div>
-                <div class="tech-logo">
-                    <img src="/src/assets/TechScroll/webflow.svg" alt="Webflow" class="tech-icon">
-                </div>
-                <div class="tech-logo">
-                    <img src="/src/assets/TechScroll/wix.svg" alt="Wix" class="tech-icon">
-                </div>
-            </div>
-        </div>
+  
+    <!-- Marquee Wrapper -->
+    <div class="marquee-wrapper">
+      <div class="marquee">
+        <!-- 1st set of logos -->
+        <div class="tech-logo"><img src="/src/assets/TechScroll/react.svg" alt="React" /></div>
+        <div class="tech-logo"><img src="/src/assets/TechScroll/tailwind.svg" alt="Tailwind" /></div>
+        <div class="tech-logo"><img src="/src/assets/TechScroll/figma.svg" alt="Figma" /></div>
+        <div class="tech-logo"><img src="/src/assets/TechScroll/webflow.svg" alt="Webflow" /></div>
+        <div class="tech-logo"><img src="/src/assets/TechScroll/wix.svg" alt="Wix" /></div>
+  
+        <!-- 2nd set of logos (identical copy) -->
+        <div class="tech-logo"><img src="/src/assets/TechScroll/react.svg" alt="React" /></div>
+        <div class="tech-logo"><img src="/src/assets/TechScroll/tailwind.svg" alt="Tailwind" /></div>
+        <div class="tech-logo"><img src="/src/assets/TechScroll/figma.svg" alt="Figma" /></div>
+        <div class="tech-logo"><img src="/src/assets/TechScroll/webflow.svg" alt="Webflow" /></div>
+        <div class="tech-logo"><img src="/src/assets/TechScroll/wix.svg" alt="Wix" /></div>
+      </div>
     </div>
 </div>
 
 <style>
-    .tech-scroll-container {
-        width: 100%;
-        overflow: hidden;
-        position: relative;
-        display: flex;
-    }
-    
-    .tech-scroll,
-    .tech-scroll-duplicate {
-        display: flex;
-        animation: scroll 30s linear infinite;
-        width: max-content;
-        flex-shrink: 0;
-    }
-    
-    .tech-scroll-duplicate {
-        animation-delay: -15s; /* Half the animation duration */
-    }
-    
-    .tech-logo-group {
-        display: flex;
-        flex-shrink: 0;
-    }
-    
-    .tech-logo {
-        flex-shrink: 0;
-        padding: 0 4rem;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        transition: transform 0.3s ease;
-    }
-    
-    .tech-icon {
-        height: 2.75rem;
-        width: auto;
-        filter: brightness(0) invert(0.8);
-        opacity: 0.7;
-        transition: all 0.3s ease;
-    }
-    
-    .tech-logo:hover .tech-icon {
-        opacity: 1;
-        filter: brightness(0) invert(1);
-        transform: translateY(-2px);
-    }
-    
-    @keyframes scroll {
-        0% {
-            transform: translateX(0);
-        }
-        100% {
-            transform: translateX(-100%);
-        }
-    }
-    
-    /* Ensure the animation continues to work properly */
-    @media (prefers-reduced-motion: no-preference) {
-        .tech-scroll,
-        .tech-scroll-duplicate {
-            will-change: transform;
-        }
-    }
-    
-    /* Pause animation on hover */
-    .tech-scroll-container:hover .tech-scroll,
-    .tech-scroll-container:hover .tech-scroll-duplicate {
-        animation-play-state: paused;
-    }
-</style> 
+    .marquee-wrapper {
+  overflow: hidden;  /* Hides overflow so the logos only appear in the container */
+  width: 100%;
+  position: relative;
+}
+
+/* The marquee is a single row containing 2x the logos (duplicated) */
+.marquee {
+  display: inline-flex;
+  white-space: nowrap;           /* Prevents line wrapping */
+  animation: marquee 30s linear infinite;
+}
+
+/* Each logo has some horizontal spacing */
+.tech-logo {
+  flex-shrink: 0;
+  padding: 0 4rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Basic styling for the logo images */
+.tech-logo img {
+  height: 2.75rem;
+  width: auto;
+  filter: brightness(0) invert(0.8);
+  opacity: 0.7;
+  transition: all 0.3s ease;
+}
+
+/* Hover effect to brighten the logo */
+.tech-logo:hover img {
+  opacity: 1;
+  filter: brightness(0) invert(1);
+  transform: translateY(-2px);
+}
+
+/* The crucial part: from 0% to -50% so the second half lines up exactly at the end */
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+</style>
+  
