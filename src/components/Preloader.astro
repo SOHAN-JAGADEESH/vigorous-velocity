@@ -590,47 +590,73 @@ if (!isHomePage) {
 </style>
 
 <script>
-    // Function to check if hero component is loaded
-    const checkHeroLoaded = () => {
-        const heroElement = document.querySelector('.hero-component'); // Add this class to your hero component
-        
-        if (heroElement && heroElement.querySelector('canvas')) {
-            // Hero with Spline is loaded
-    const preloader = document.getElementById('preloader');
-            if (preloader) {
-                preloader.classList.add('preloader-fade-out');
-                setTimeout(() => {
-                    if (preloader) preloader.style.display = 'none';
+    // Function to hide the preloader with a fade effect
+    const hidePreloader = () => {
+        const preloader = document.getElementById('preloader');
+        if (preloader) {
+            preloader.classList.add('preloader-fade-out');
+            setTimeout(() => {
+                if (preloader) preloader.style.display = 'none';
             }, 500);
         }
+    };
+
+    // Function to check if hero component is loaded
+    const checkHeroLoaded = () => {
+        const heroElement = document.querySelector('.hero-component');
+        const splineIframe = document.querySelector('#hero-spline');
+        
+        if (heroElement && splineIframe) {
+            // We found the elements, but we'll wait for the iframe to fully load
             return true;
         }
         return false;
     };
     
-    // Check if hero is already loaded
-    if (!checkHeroLoaded()) {
-        // Set a timeout as fallback
-        const maxWaitTime = 5000; // 5 seconds max wait time
+    // Wait for the DOM to be fully loaded
+    document.addEventListener('DOMContentLoaded', () => {
+        let iframeLoaded = false;
+        let timeoutTriggered = false;
         
-        // Check periodically if hero is loaded
-        const heroCheckInterval = setInterval(() => {
-            if (checkHeroLoaded()) {
+        // Set up iframe load event listener
+        const splineIframe = document.querySelector('#hero-spline');
+        if (splineIframe) {
+            // Listen for the iframe's load event
+            splineIframe.addEventListener('load', () => {
+                console.log('Spline iframe loaded');
+                iframeLoaded = true;
+                if (!timeoutTriggered) {
+                    // Add a small delay before hiding the preloader
+                    setTimeout(() => {
+                        hidePreloader();
+                    }, 200); // 100ms delay for seamless transition
+                }
+            });
+        }
+        
+        // Check if hero is already loaded
+        if (!checkHeroLoaded()) {
+            // Set a timeout as fallback
+            const maxWaitTime = 5000; // 5 seconds max wait time
+            
+            // Check periodically if hero is loaded
+            const heroCheckInterval = setInterval(() => {
+                if (checkHeroLoaded() && iframeLoaded) {
+                    clearInterval(heroCheckInterval);
+                    clearTimeout(fallbackTimeout);
+                    // Add a small delay before hiding the preloader
+                    setTimeout(() => {
+                        hidePreloader();
+                    }, 200); // 100ms delay for seamless transition
+                }
+            }, 100);
+            
+            // Fallback timeout in case hero detection fails
+            const fallbackTimeout = setTimeout(() => {
+                timeoutTriggered = true;
                 clearInterval(heroCheckInterval);
-                clearTimeout(fallbackTimeout);
-            }
-        }, 100);
-        
-        // Fallback timeout in case hero detection fails
-        const fallbackTimeout = setTimeout(() => {
-            clearInterval(heroCheckInterval);
-            const preloader = document.getElementById('preloader');
-            if (preloader) {
-                preloader.classList.add('preloader-fade-out');
-        setTimeout(() => {
-                    if (preloader) preloader.style.display = 'none';
-                }, 500);
-            }
-        }, maxWaitTime);
-    }
+                hidePreloader();
+            }, maxWaitTime);
+        }
+    });
 </script> 

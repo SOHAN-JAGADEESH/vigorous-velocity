@@ -1,79 +1,104 @@
-<div class="bg-primary-dark py-12 border-y border-accent/20 overflow-hidden">
-    <!-- Optional title/heading -->
-    <div class="container mx-auto px-4 sm:px-6 lg:px-8 mb-6">
+<div class="bg-primary-dark py-6 border-y border-accent/20">
+    <!-- Title / Subtitle -->
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8 mb-4">
       <p class="text-center text-sm text-gray-500 uppercase tracking-wider font-medium">
-        Trusted by leading technology companies
+        Our Tech Stack
       </p>
     </div>
   
-    <!-- Marquee Wrapper -->
-    <div class="marquee-wrapper">
-      <div class="marquee">
-        <!-- 1st set of logos -->
-        <div class="tech-logo"><img src="/src/assets/TechScroll/react.svg" alt="React" /></div>
-        <div class="tech-logo"><img src="/src/assets/TechScroll/tailwind.svg" alt="Tailwind" /></div>
-        <div class="tech-logo"><img src="/src/assets/TechScroll/figma.svg" alt="Figma" /></div>
-        <div class="tech-logo"><img src="/src/assets/TechScroll/webflow.svg" alt="Webflow" /></div>
-        <div class="tech-logo"><img src="/src/assets/TechScroll/wix.svg" alt="Wix" /></div>
+    <!-- Scroller Container -->
+    <div class="scroller">
+      <div class="scroller__inner">
+        <!-- First set of logos -->
+        <div class="logo-item"><img src="/src/assets/TechScroll/react.svg" alt="React" /></div>
+        <div class="logo-item"><img src="/src/assets/TechScroll/tailwind.svg" alt="Tailwind" /></div>
+        <div class="logo-item"><img src="/src/assets/TechScroll/figma.svg" alt="Figma" /></div>
+        <div class="logo-item"><img src="/src/assets/TechScroll/webflow.svg" alt="Webflow" /></div>
+        <div class="logo-item"><img src="/src/assets/TechScroll/wix.svg" alt="Wix" /></div>
+        <div class="logo-item"><img src="/src/assets/TechScroll/astro.svg" alt="Astro" /></div>
   
-        <!-- 2nd set of logos (identical copy) -->
-        <div class="tech-logo"><img src="/src/assets/TechScroll/react.svg" alt="React" /></div>
-        <div class="tech-logo"><img src="/src/assets/TechScroll/tailwind.svg" alt="Tailwind" /></div>
-        <div class="tech-logo"><img src="/src/assets/TechScroll/figma.svg" alt="Figma" /></div>
-        <div class="tech-logo"><img src="/src/assets/TechScroll/webflow.svg" alt="Webflow" /></div>
-        <div class="tech-logo"><img src="/src/assets/TechScroll/wix.svg" alt="Wix" /></div>
+        <!-- Second set of logos -->
+        <div class="logo-item"><img src="/src/assets/TechScroll/react.svg" alt="React" /></div>
+        <div class="logo-item"><img src="/src/assets/TechScroll/tailwind.svg" alt="Tailwind" /></div>
+        <div class="logo-item"><img src="/src/assets/TechScroll/figma.svg" alt="Figma" /></div>
+        <div class="logo-item"><img src="/src/assets/TechScroll/webflow.svg" alt="Webflow" /></div>
+        <div class="logo-item"><img src="/src/assets/TechScroll/wix.svg" alt="Wix" /></div>
+        <div class="logo-item"><img src="/src/assets/TechScroll/astro.svg" alt="Astro" /></div>
+        
+        <!-- Third set of logos -->
+        <div class="logo-item"><img src="/src/assets/TechScroll/react.svg" alt="React" /></div>
+        <div class="logo-item"><img src="/src/assets/TechScroll/tailwind.svg" alt="Tailwind" /></div>
+        <div class="logo-item"><img src="/src/assets/TechScroll/figma.svg" alt="Figma" /></div>
+        <div class="logo-item"><img src="/src/assets/TechScroll/webflow.svg" alt="Webflow" /></div>
+        <div class="logo-item"><img src="/src/assets/TechScroll/wix.svg" alt="Wix" /></div>
+        <div class="logo-item"><img src="/src/assets/TechScroll/astro.svg" alt="Astro" /></div>
+        
+        <!-- Fourth set of logos for even smoother transition -->
+        <div class="logo-item"><img src="/src/assets/TechScroll/react.svg" alt="React" /></div>
+        <div class="logo-item"><img src="/src/assets/TechScroll/tailwind.svg" alt="Tailwind" /></div>
+        <div class="logo-item"><img src="/src/assets/TechScroll/figma.svg" alt="Figma" /></div>
+        <div class="logo-item"><img src="/src/assets/TechScroll/webflow.svg" alt="Webflow" /></div>
+        <div class="logo-item"><img src="/src/assets/TechScroll/wix.svg" alt="Wix" /></div>
+        <div class="logo-item"><img src="/src/assets/TechScroll/astro.svg" alt="Astro" /></div>
       </div>
     </div>
-</div>
-
-<style>
-    .marquee-wrapper {
-  overflow: hidden;  /* Hides overflow so the logos only appear in the container */
-  width: 100%;
-  position: relative;
-}
-
-/* The marquee is a single row containing 2x the logos (duplicated) */
-.marquee {
-  display: inline-flex;
-  white-space: nowrap;           /* Prevents line wrapping */
-  animation: marquee 30s linear infinite;
-}
-
-/* Each logo has some horizontal spacing */
-.tech-logo {
-  flex-shrink: 0;
-  padding: 0 4rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-/* Basic styling for the logo images */
-.tech-logo img {
-  height: 2.75rem;
-  width: auto;
-  filter: brightness(0) invert(0.8);
-  opacity: 0.7;
-  transition: all 0.3s ease;
-}
-
-/* Hover effect to brighten the logo */
-.tech-logo:hover img {
-  opacity: 1;
-  filter: brightness(0) invert(1);
-  transform: translateY(-2px);
-}
-
-/* The crucial part: from 0% to -50% so the second half lines up exactly at the end */
-@keyframes marquee {
-  0% {
-    transform: translateX(0);
-  }
-  100% {
-    transform: translateX(-50%);
-  }
-}
-
-</style>
+  </div>
+  
+  <style>
+    .scroller {
+      /* If you want the scrolling area narrower, keep width:80%. 
+         Otherwise, consider using width:100% for a simpler layout. */
+      width: 80%;  
+      margin: 0 auto;
+      max-width: 1400px;
+      overflow: hidden;
+  
+      /* Optional fade mask on the sides */
+      mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent 100%);
+      -webkit-mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent 100%);
+    }
+  
+    .scroller__inner {
+      display: flex;
+      gap: 4rem;             /* Must be the same for all sets of logos */
+      width: max-content;    /* Ensures container expands to fit all logos */
+      animation: scroll 30s linear infinite; /* Increased duration for smoother scrolling with more logos */
+    }
+  
+    .logo-item {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex: 0 0 auto;        /* Prevent shrinking or growing */
+    }
+  
+    .logo-item img {
+      height: 2.75rem;
+      width: auto;
+      filter: brightness(0) invert(0.8);
+      opacity: 0.7;
+      transition: all 0.3s ease;
+    }
+  
+    .logo-item:hover img {
+      opacity: 1;
+      filter: brightness(0) invert(1);
+      transform: translateY(-2px);
+    }
+  
+    @keyframes scroll {
+      0% {
+        transform: translateX(0);
+      }
+      100% {
+        /* Move left by 25% (one-fourth) so the animation is smoother */
+        transform: translateX(calc(-100% / 4));
+      }
+    }
+  
+    /* Pause animation on hover */
+    .scroller:hover .scroller__inner {
+      animation-play-state: paused;
+    }
+  </style>
   

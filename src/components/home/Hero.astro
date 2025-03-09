@@ -1,4 +1,4 @@
-<section class="relative min-h-screen flex items-center overflow-hidden bg-black">
+<section class="hero-component hero-hidden relative min-h-screen flex items-center overflow-hidden bg-black">
     <!-- Spline Background -->
     <div class="absolute inset-0 w-full h-full z-0 pointer-events-auto flex items-center justify-center">
         <iframe id="hero-spline" src='https://my.spline.design/particles-79c23f2b7ff8c2699fc742bfa20a8a9f/' frameborder='0' width='100%' height='100%' style="pointer-events: auto;" allow="autoplay; fullscreen; pointer-lock;"></iframe>
@@ -43,4 +43,43 @@
             </div>
         </div>
     </div>
-</section> 
+</section>
+
+<style>
+    .hero-hidden {
+        opacity: 0;
+        transition: opacity 0.5s ease-in-out;
+    }
+    
+    .hero-visible {
+        opacity: 1;
+    }
+</style>
+
+<script>
+    // Show the hero when the iframe is loaded
+    document.addEventListener('DOMContentLoaded', () => {
+        const heroElement = document.querySelector('.hero-component');
+        const splineIframe = document.querySelector('#hero-spline');
+        
+        if (splineIframe) {
+            splineIframe.addEventListener('load', () => {
+                if (heroElement) {
+                    // Add a small delay to ensure the iframe content is fully rendered
+                    setTimeout(() => {
+                        heroElement.classList.remove('hero-hidden');
+                        heroElement.classList.add('hero-visible');
+                    }, 100); // 200ms delay (100ms after preloader starts fading)
+                }
+            });
+        }
+        
+        // Fallback in case the iframe load event doesn't fire
+        setTimeout(() => {
+            if (heroElement && heroElement.classList.contains('hero-hidden')) {
+                heroElement.classList.remove('hero-hidden');
+                heroElement.classList.add('hero-visible');
+            }
+        }, 5500); // Slightly longer than the preloader timeout
+    });
+</script> 
