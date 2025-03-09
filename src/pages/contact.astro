@@ -6,107 +6,125 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     <section class="py-20 bg-primary">
         <div class="container mx-auto">
             <div class="max-w-4xl mx-auto text-center mb-16">
-                <h1 class="section-title mx-auto">Let’s Build Something Timeless</h1>
-                <p class="text-gray-400 mt-8 text-lg">Ready to bring your vision to life? Share your project details, and we’ll create a digital experience that’s elegant and enduring.</p>
+                <h1 class="section-title mx-auto">Let's Build Something Timeless</h1>
+                <p class="text-gray-400 mt-8 text-lg">Ready to bring your vision to life? Share your project details, and we'll create a digital experience that's elegant and enduring.</p>
             </div>
             
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
                 <!-- Contact Form -->
                 <div class="card border border-accent/30">
-                    <h2 class="text-2xl font-bold text-white mb-6">Tell Us About Your Project</h2>
-                    <form id="contact-form" class="space-y-6">
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                            <div>
-                                <label for="name" class="block text-sm font-medium text-gray-400 mb-2">Your Name</label>
-                                <input 
-                                    type="text" 
-                                    id="name" 
-                                    name="name" 
-                                    class="w-full px-4 py-3 bg-primary-light border border-accent/20 rounded-lg focus:outline-none focus:ring-2 focus:ring-accent/50 hover:border-accent/50 transition-all duration-300 text-white"
-                                    placeholder="Your Full Name"
-                                    required
-                                />
+                    <div id="form-container">
+                        <h2 class="text-2xl font-bold text-white mb-6">Tell Us About Your Project</h2>
+                        <form id="contact-form" class="space-y-6">
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                <div>
+                                    <label for="name" class="block text-sm font-medium text-gray-400 mb-2">Your Name</label>
+                                    <input 
+                                        type="text" 
+                                        id="name" 
+                                        name="name" 
+                                        class="w-full px-4 py-3 bg-primary-light border border-accent/20 rounded-lg focus:outline-none focus:ring-2 focus:ring-accent/50 hover:border-accent/50 transition-all duration-300 text-white"
+                                        placeholder="Your Full Name"
+                                        required
+                                    />
+                                </div>
+                                <div>
+                                    <label for="email" class="block text-sm font-medium text-gray-400 mb-2">Your Email</label>
+                                    <input 
+                                        type="email" 
+                                        id="email" 
+                                        name="email" 
+                                        class="w-full px-4 py-3 bg-primary-light border border-accent/20 rounded-lg focus:outline-none focus:ring-2 focus:ring-accent/50 hover:border-accent/50 transition-all duration-300 text-white"
+                                        placeholder="your.email@example.com"
+                                        required
+                                    />
+                                </div>
                             </div>
-                            <div>
-                                <label for="email" class="block text-sm font-medium text-gray-400 mb-2">Your Email</label>
-                                <input 
-                                    type="email" 
-                                    id="email" 
-                                    name="email" 
-                                    class="w-full px-4 py-3 bg-primary-light border border-accent/20 rounded-lg focus:outline-none focus:ring-2 focus:ring-accent/50 hover:border-accent/50 transition-all duration-300 text-white"
-                                    placeholder="your.email@example.com"
-                                    required
-                                />
-                            </div>
-                        </div>
 
-                        <div>
-                            <label for="projectType" class="block text-sm font-medium text-gray-400 mb-2">Project Type</label>
-                            <select 
-                                id="projectType" 
-                                name="projectType" 
-                                class="w-full px-4 py-3 bg-primary-light border border-accent/20 rounded-lg focus:outline-none focus:ring-2 focus:ring-accent/50 hover:border-accent/50 transition-all duration-300 text-white"
-                                required
-                            >
-                                <option value="" disabled selected>Select your project type</option>
-                                <option value="ecommerce">E-Commerce Website</option>
-                                <option value="portfolio">Portfolio or Personal Site</option>
-                                <option value="blog">Blog or Content Site</option>
-                                <option value="business">Business Website</option>
-                                <option value="other">Other</option>
-                            </select>
-                        </div>
-
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                             <div>
-                                <label for="budget" class="block text-sm font-medium text-gray-400 mb-2">Budget Range</label>
+                                <label for="projectType" class="block text-sm font-medium text-gray-400 mb-2">Project Type</label>
                                 <select 
-                                    id="budget" 
-                                    name="budget" 
+                                    id="projectType" 
+                                    name="projectType" 
                                     class="w-full px-4 py-3 bg-primary-light border border-accent/20 rounded-lg focus:outline-none focus:ring-2 focus:ring-accent/50 hover:border-accent/50 transition-all duration-300 text-white"
                                     required
                                 >
-                                    <option value="" disabled selected>Select your budget</option>
-                                    <option value="under5k">Under $5,000</option>
-                                    <option value="5k-10k">$5,000 - $10,000</option>
-                                    <option value="10k-20k">$10,000 - $20,000</option>
-                                    <option value="20k-plus">Above $20,000</option>
+                                    <option value="" disabled selected>Select your project type</option>
+                                    <option value="ecommerce">E-Commerce Website</option>
+                                    <option value="portfolio">Portfolio or Personal Site</option>
+                                    <option value="blog">Blog or Content Site</option>
+                                    <option value="business">Business Website</option>
+                                    <option value="other">Other</option>
                                 </select>
                             </div>
-                            <div>
-                                <label for="timeline" class="block text-sm font-medium text-gray-400 mb-2">Desired Timeline</label>
-                                <input 
-                                    type="text" 
-                                    id="timeline" 
-                                    name="timeline" 
-                                    class="w-full px-4 py-3 bg-primary-light border border-accent/20 rounded-lg focus:outline-none focus:ring-2 focus:ring-accent/50 hover:border-accent/50 transition-all duration-300 text-white"
-                                    placeholder="E.g., 2 months"
-                                    required
-                                />
+
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                <div>
+                                    <label for="budget" class="block text-sm font-medium text-gray-400 mb-2">Budget Range</label>
+                                    <select 
+                                        id="budget" 
+                                        name="budget" 
+                                        class="w-full px-4 py-3 bg-primary-light border border-accent/20 rounded-lg focus:outline-none focus:ring-2 focus:ring-accent/50 hover:border-accent/50 transition-all duration-300 text-white"
+                                        required
+                                    >
+                                        <option value="" disabled selected>Select your budget</option>
+                                        <option value="under5k">Under $5,000</option>
+                                        <option value="5k-10k">$5,000 - $10,000</option>
+                                        <option value="10k-20k">$10,000 - $20,000</option>
+                                        <option value="20k-plus">Above $20,000</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <label for="timeline" class="block text-sm font-medium text-gray-400 mb-2">Desired Timeline</label>
+                                    <input 
+                                        type="text" 
+                                        id="timeline" 
+                                        name="timeline" 
+                                        class="w-full px-4 py-3 bg-primary-light border border-accent/20 rounded-lg focus:outline-none focus:ring-2 focus:ring-accent/50 hover:border-accent/50 transition-all duration-300 text-white"
+                                        placeholder="E.g., 2 months"
+                                        required
+                                    />
+                                </div>
                             </div>
-                        </div>
-                        
-                        <div>
-                            <label for="message" class="block text-sm font-medium text-gray-400 mb-2">Project Details</label>
-                            <textarea 
-                                id="message" 
-                                name="message" 
-                                rows="4" 
-                                class="w-full px-4 py-3 bg-primary-light border border-accent/20 rounded-lg focus:outline-none focus:ring-2 focus:ring-accent/50 hover:border-accent/50 transition-all duration-300 text-white resize-none"
-                                placeholder="Tell us about your vision..."
-                                required
-                            ></textarea>
-                        </div>
-                        
-                        <div>
-                            <button 
-                                type="submit" 
-                                class="btn btn-primary w-full bg-accent text-primary hover:bg-accent/80 transition-all duration-300"
-                            >
-                                Start Your Project
-                            </button>
-                        </div>
-                    </form>
+                            
+                            <div>
+                                <label for="message" class="block text-sm font-medium text-gray-400 mb-2">Project Details</label>
+                                <textarea 
+                                    id="message" 
+                                    name="message" 
+                                    rows="4" 
+                                    class="w-full px-4 py-3 bg-primary-light border border-accent/20 rounded-lg focus:outline-none focus:ring-2 focus:ring-accent/50 hover:border-accent/50 transition-all duration-300 text-white resize-none"
+                                    placeholder="Tell us about your vision..."
+                                    required
+                                ></textarea>
+                            </div>
+                            
+                            <div>
+                                <button 
+                                    type="submit" 
+                                    id="submit-button"
+                                    class="btn btn-primary w-full bg-accent text-primary hover:bg-accent/80 transition-all duration-300"
+                                >
+                                    Start Your Project
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                    
+                    <!-- Success Message (Hidden by default) -->
+                    <div id="success-message" class="text-center py-8 hidden">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-16 w-16 text-green-500 mx-auto mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                        <h2 class="text-2xl font-bold text-white mb-3">Message Sent Successfully!</h2>
+                        <p class="text-gray-400 mb-6">Thank you for reaching out. We'll get back to you within 24-48 hours.</p>
+                        <button 
+                            id="new-message-btn" 
+                            class="btn btn-primary bg-accent text-primary hover:bg-accent/80 transition-all duration-300"
+                        >
+                            Send Another Message
+                        </button>
+                    </div>
                 </div>
                 
                 <!-- Contact Information -->
@@ -135,7 +153,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
                                 </div>
                                 <div>
                                     <h3 class="text-lg font-medium text-white">Email Us</h3>
-                                    <p class="text-gray-400 mt-1">info@aevumnexus.com</p>
+                                    <p class="text-gray-400 mt-1">sabari@avmnexus.com</p>
                                     <p class="text-gray-400">support@aevumnexus.com</p>
                                 </div>
                             </div>
@@ -159,23 +177,84 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     </section>
 
     <!-- EmailJS Script -->
-    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
-    <script>
-        (function() {
-            emailjs.init("YOUR_PUBLIC_KEY"); // Replace with your EmailJS public key
-        })();
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script type="text/javascript">
+        // Wait for the EmailJS script to load
+        window.onload = function() {
+            // Check if emailjs is defined
+            if (typeof emailjs !== 'undefined') {
+                // Initialize EmailJS with your public key
+                emailjs.init("L1BLiWBRKxGrawbcU");
+                console.log("EmailJS initialized successfully");
+            } else {
+                console.error("EmailJS failed to load");
+            }
+        };
 
-        document.getElementById('contact-form').addEventListener('submit', function(event) {
-            event.preventDefault();
+        document.addEventListener('DOMContentLoaded', function() {
+            const form = document.getElementById('contact-form');
+            const formContainer = document.getElementById('form-container');
+            const successMessage = document.getElementById('success-message');
+            const submitButton = document.getElementById('submit-button');
+            const newMessageBtn = document.getElementById('new-message-btn');
 
-            emailjs.sendForm('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', this)
-                .then(function() {
-                    alert('Your message has been sent successfully!');
-                    document.getElementById('contact-form').reset();
-                }, function(error) {
-                    alert('Failed to send your message. Please try again later.');
-                    console.log('Error:', error);
+            if (form) {
+                form.addEventListener('submit', function(event) {
+                    event.preventDefault();
+                    
+                    // Check if emailjs is defined before trying to use it
+                    if (typeof emailjs === 'undefined') {
+                        console.error("EmailJS is not loaded. Cannot send email.");
+                        alert("There was a problem with the email service. Please try again later.");
+                        return;
+                    }
+                    
+                    // Disable submit button and show loading state
+                    if (submitButton) {
+                        submitButton.disabled = true;
+                        submitButton.innerHTML = 'Sending...';
+                    }
+                    
+                    // Add console logs for debugging
+                    console.log('Sending email with EmailJS...');
+                    console.log('Service ID:', 'service_n0uwyie');
+                    console.log('Template ID:', 'template_sc0onga');
+                    
+                    // Send the form data using EmailJS
+                    emailjs.sendForm('service_n0uwyie', 'template_sc0onga', this)
+                        .then(function(response) {
+                            console.log('SUCCESS!', response.status, response.text);
+                            
+                            // Hide form and show success message
+                            if (formContainer) formContainer.classList.add('hidden');
+                            if (successMessage) successMessage.classList.remove('hidden');
+                            
+                            // Reset form
+                            form.reset();
+                        }, function(error) {
+                            console.log('FAILED...', error);
+                            alert('Failed to send your message. Please try again later.');
+                            
+                            // Re-enable submit button
+                            if (submitButton) {
+                                submitButton.disabled = false;
+                                submitButton.innerHTML = 'Start Your Project';
+                            }
+                        });
                 });
+            }
+            
+            // Add event listener for "Send Another Message" button
+            if (newMessageBtn) {
+                newMessageBtn.addEventListener('click', function() {
+                    if (formContainer) formContainer.classList.remove('hidden');
+                    if (successMessage) successMessage.classList.add('hidden');
+                    if (submitButton) {
+                        submitButton.disabled = false;
+                        submitButton.innerHTML = 'Start Your Project';
+                    }
+                });
+            }
         });
     </script>
 </BaseLayout>
