@@ -3,18 +3,45 @@
     <div class="container mx-auto px-4">
         <!-- Section Header -->
         <div class="text-center mb-12">
-            <h2 class="section-title">Our recent project</h2>
+            <h2 class="section-title">Our Recent Project</h2>
             <p class="text-[#9A8C7C] text-lg">A seamless blend of creative design and technical expertise</p>
         </div>
 
-        <!-- Project Image -->
-        <div class="w-[70%] mx-auto relative rounded-xl overflow-hidden shadow-2xl">
-            <div class="absolute inset-0 bg-gradient-to-tr from-black/30 via-transparent to-black/30 pointer-events-none"></div>
+        <!-- Project Image with Link - More Subtle & Elegant -->
+        <a href="https://www.thefarmyarravalley.com.au/" target="_blank" rel="noopener noreferrer" class="project-link block w-[70%] mx-auto relative rounded-xl overflow-hidden shadow-2xl group">
+            <div class="absolute inset-0 bg-gradient-to-tr from-black/30 via-transparent to-black/30 pointer-events-none z-10"></div>
+            <div class="absolute inset-0 bg-accent/5 opacity-0 group-hover:opacity-100 transition-opacity duration-700 z-10"></div>
             <img 
                 src="/ourproject.avif" 
                 alt="The Farm Yarra Valley Website" 
-                class="w-full h-auto"
+                class="w-full h-auto transition-transform duration-1000 ease-out group-hover:scale-103"
             />
-        </div>
+            <div class="absolute bottom-0 left-0 right-0 p-5 bg-gradient-to-t from-black/70 via-black/30 to-transparent z-20">
+                <div class="flex items-center justify-between opacity-80 group-hover:opacity-100 transition-opacity duration-700">
+                    <p class="text-white text-sm font-light">The Farm Yarra Valley</p>
+                    <div class="flex items-center">
+                        <span class="text-accent/80 text-xs tracking-wide">View Project</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3 ml-1.5 text-accent/80 transform translate-y-0 group-hover:translate-x-0.5 transition-transform duration-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                        </svg>
+                    </div>
+                </div>
+            </div>
+        </a>
     </div>
-</section> 
+</section>
+
+<style>
+    .project-link {
+        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+        transition: all 0.7s ease;
+    }
+    
+    .project-link:hover {
+        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5), 0 0 30px rgba(212, 175, 55, 0.1);
+    }
+    
+    .scale-103 {
+        transform: scale(1.03);
+    }
+</style> 
