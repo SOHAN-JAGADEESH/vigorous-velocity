@@ -1,6 +1,6 @@
-<div class="bg-primary-dark py-8 border-y border-accent/20 overflow-hidden">
-    <div class="container mx-auto px-4 sm:px-6 lg:px-8 mb-4">
-        <p class="text-center text-sm text-gray-500 uppercase tracking-wider">Trusted by leading technology companies</p>
+<div class="bg-primary-dark py-12 border-y border-accent/20 overflow-hidden">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8 mb-6">
+        <p class="text-center text-sm text-gray-500 uppercase tracking-wider font-medium">Trusted by leading technology companies</p>
     </div>
     
     <div class="tech-scroll-container">
@@ -8,38 +8,79 @@
             <!-- First set of logos -->
             <div class="tech-logo-group">
                 <div class="tech-logo">
-                    <img src="/src/assets/TechScroll/react.svg" alt="React" class="h-8 w-auto tech-icon">
+                    <img src="/src/assets/TechScroll/react.svg" alt="React" class="tech-icon">
                 </div>
                 <div class="tech-logo">
-                    <img src="/src/assets/TechScroll/tailwind.svg" alt="Tailwind" class="h-8 w-auto tech-icon">
+                    <img src="/src/assets/TechScroll/tailwind.svg" alt="Tailwind" class="tech-icon">
                 </div>
                 <div class="tech-logo">
-                    <img src="/src/assets/TechScroll/figma.svg" alt="Figma" class="h-8 w-auto tech-icon">
+                    <img src="/src/assets/TechScroll/figma.svg" alt="Figma" class="tech-icon">
                 </div>
                 <div class="tech-logo">
-                    <img src="/src/assets/TechScroll/webflow.svg" alt="Webflow" class="h-8 w-auto tech-icon">
+                    <img src="/src/assets/TechScroll/webflow.svg" alt="Webflow" class="tech-icon">
                 </div>
                 <div class="tech-logo">
-                    <img src="/src/assets/TechScroll/wix.svg" alt="Wix" class="h-8 w-auto tech-icon">
+                    <img src="/src/assets/TechScroll/wix.svg" alt="Wix" class="tech-icon">
                 </div>
             </div>
             
-            <!-- Duplicate for infinite scroll effect -->
+            <!-- Second set of logos -->
             <div class="tech-logo-group">
                 <div class="tech-logo">
-                    <img src="/src/assets/TechScroll/react.svg" alt="React" class="h-8 w-auto tech-icon">
+                    <img src="/src/assets/TechScroll/react.svg" alt="React" class="tech-icon">
                 </div>
                 <div class="tech-logo">
-                    <img src="/src/assets/TechScroll/tailwind.svg" alt="Tailwind" class="h-8 w-auto tech-icon">
+                    <img src="/src/assets/TechScroll/tailwind.svg" alt="Tailwind" class="tech-icon">
                 </div>
                 <div class="tech-logo">
-                    <img src="/src/assets/TechScroll/figma.svg" alt="Figma" class="h-8 w-auto tech-icon">
+                    <img src="/src/assets/TechScroll/figma.svg" alt="Figma" class="tech-icon">
                 </div>
                 <div class="tech-logo">
-                    <img src="/src/assets/TechScroll/webflow.svg" alt="Webflow" class="h-8 w-auto tech-icon">
+                    <img src="/src/assets/TechScroll/webflow.svg" alt="Webflow" class="tech-icon">
                 </div>
                 <div class="tech-logo">
-                    <img src="/src/assets/TechScroll/wix.svg" alt="Wix" class="h-8 w-auto tech-icon">
+                    <img src="/src/assets/TechScroll/wix.svg" alt="Wix" class="tech-icon">
+                </div>
+            </div>
+        </div>
+        
+        <!-- Duplicate for truly seamless scrolling -->
+        <div class="tech-scroll tech-scroll-duplicate">
+            <!-- First set of logos (duplicate) -->
+            <div class="tech-logo-group">
+                <div class="tech-logo">
+                    <img src="/src/assets/TechScroll/react.svg" alt="React" class="tech-icon">
+                </div>
+                <div class="tech-logo">
+                    <img src="/src/assets/TechScroll/tailwind.svg" alt="Tailwind" class="tech-icon">
+                </div>
+                <div class="tech-logo">
+                    <img src="/src/assets/TechScroll/figma.svg" alt="Figma" class="tech-icon">
+                </div>
+                <div class="tech-logo">
+                    <img src="/src/assets/TechScroll/webflow.svg" alt="Webflow" class="tech-icon">
+                </div>
+                <div class="tech-logo">
+                    <img src="/src/assets/TechScroll/wix.svg" alt="Wix" class="tech-icon">
+                </div>
+            </div>
+            
+            <!-- Second set of logos (duplicate) -->
+            <div class="tech-logo-group">
+                <div class="tech-logo">
+                    <img src="/src/assets/TechScroll/react.svg" alt="React" class="tech-icon">
+                </div>
+                <div class="tech-logo">
+                    <img src="/src/assets/TechScroll/tailwind.svg" alt="Tailwind" class="tech-icon">
+                </div>
+                <div class="tech-logo">
+                    <img src="/src/assets/TechScroll/figma.svg" alt="Figma" class="tech-icon">
+                </div>
+                <div class="tech-logo">
+                    <img src="/src/assets/TechScroll/webflow.svg" alt="Webflow" class="tech-icon">
+                </div>
+                <div class="tech-logo">
+                    <img src="/src/assets/TechScroll/wix.svg" alt="Wix" class="tech-icon">
                 </div>
             </div>
         </div>
@@ -50,12 +91,20 @@
     .tech-scroll-container {
         width: 100%;
         overflow: hidden;
+        position: relative;
+        display: flex;
     }
     
-    .tech-scroll {
+    .tech-scroll,
+    .tech-scroll-duplicate {
         display: flex;
         animation: scroll 30s linear infinite;
-        width: fit-content;
+        width: max-content;
+        flex-shrink: 0;
+    }
+    
+    .tech-scroll-duplicate {
+        animation-delay: -15s; /* Half the animation duration */
     }
     
     .tech-logo-group {
@@ -65,7 +114,7 @@
     
     .tech-logo {
         flex-shrink: 0;
-        padding: 0 2rem;
+        padding: 0 4rem;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -73,18 +122,17 @@
     }
     
     .tech-icon {
+        height: 2.75rem;
+        width: auto;
         filter: brightness(0) invert(0.8);
         opacity: 0.7;
-        transition: opacity 0.3s ease, filter 0.3s ease;
+        transition: all 0.3s ease;
     }
     
     .tech-logo:hover .tech-icon {
         opacity: 1;
-        filter: brightness(0) invert(0.9);
-    }
-    
-    .tech-logo:hover {
-        transform: scale(1.1);
+        filter: brightness(0) invert(1);
+        transform: translateY(-2px);
     }
     
     @keyframes scroll {
@@ -92,7 +140,21 @@
             transform: translateX(0);
         }
         100% {
-            transform: translateX(-50%);
+            transform: translateX(-100%);
         }
+    }
+    
+    /* Ensure the animation continues to work properly */
+    @media (prefers-reduced-motion: no-preference) {
+        .tech-scroll,
+        .tech-scroll-duplicate {
+            will-change: transform;
+        }
+    }
+    
+    /* Pause animation on hover */
+    .tech-scroll-container:hover .tech-scroll,
+    .tech-scroll-container:hover .tech-scroll-duplicate {
+        animation-play-state: paused;
     }
 </style> 
