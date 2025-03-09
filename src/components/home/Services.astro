@@ -3,7 +3,7 @@
 
     
     <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div class="max-w-3xl mx-auto text-center mb-16">
+        <div class="max-w-3xl mx-auto text-center mb-8">
             <h2 class="section-title">Our Services</h2>
             <p class="text-gray-400 mt-6 text-lg">We offer a comprehensive range of digital services to help your business thrive in the digital landscape.</p>
         </div>
@@ -11,7 +11,7 @@
         <!-- Services Carousel Container -->
         <div class="services-container relative">
             <!-- Visible height container -->
-            <div class="services-viewport h-[80vh] relative">
+            <div class="services-viewport h-[55vh] relative">
                 <!-- Card stack container -->
                 <div class="services-stack relative w-full h-full flex justify-center items-center">
                     <!-- Service 1 -->
@@ -197,12 +197,9 @@
             
             <!-- CTA -->
             <div class="mt-0 text-center">
-                <a href="/contact" class="btn btn-primary bg-[#D4AF37] hover:bg-[#C4A030] text-black font-medium py-3 px-8 rounded-full inline-flex items-center transition-all duration-300">
+                <button class="custom-button">
                     Discuss Your Project
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2" viewBox="0 0 20 20" fill="currentColor">
-                        <path fill-rule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
-                    </svg>
-                </a>
+                </button>
             </div>
         </div>
     </div>
@@ -319,7 +316,7 @@
     
     /* Service card styles */
     .services-stack {
-        perspective: 2000px;
+        perspective: 1500px;
     }
     
     .service-card {
@@ -329,7 +326,9 @@
         background: rgba(0, 0, 0, 0.894);
         backdrop-filter: blur(10px);
         box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-        transition: all 2s cubic-bezier(0.23, .8, 0.25, 1), opacity .5s ease;
+        /* transition: all 2s cubic-bezier(0.23, .8, 0.25, 1), opacity .5s ease; */
+        transition: transform .8s ease-in-out, opacity 0.8s ease 0.3s;
+        will-change: transform, opacity;
         pointer-events: none; /* Disable interactions by default */
     }
     
@@ -352,13 +351,13 @@
     
     .service-card.prev {
         z-index: 20;
-        transform: translateZ(-100px) translateX(-20%) scale(0.9);
+        transform: translateZ(-50px) translateX(-20%) scale(0.9);
         opacity: .6;
     }
     
     .service-card.next {
         z-index: 20;
-        transform: translateZ(-100px) translateX(20%) scale(0.9);
+        transform: translateZ(-50px) translateX(20%) scale(0.9);
         opacity: .6;
     }
     
@@ -378,5 +377,54 @@
     .service-card.prev,
     .service-card.next {
         cursor: default;
+    }
+
+    .custom-button {
+        width: 12em;
+        height: 3em;
+        border-radius: 20em;
+        font-size: 15px;
+        font-family: inherit;
+        border: .5px solid #D4AF37;
+        position: relative;
+        overflow: hidden;
+        z-index: 1;
+        color: #D4AF37;
+        background: transparent;
+        box-shadow: 6px 6px 12px rgba(0, 0, 0, 0.4),
+                    -6px -6px 12px rgba(255, 255, 255, 0.1);
+        transition: color 0.5s ease;
+        cursor: pointer;
+    }
+
+    .custom-button::before {
+        content: '';
+        width: 0;
+        height: 3em;
+        border-radius: 30em;
+        position: absolute;
+        top: 0;
+        left: 0;
+        background-image: linear-gradient(to right, #ffe9a0 0%, #C4A030 100%);
+        transition: .5s ease;
+        display: block;
+        z-index: -1;
+    }
+
+    .custom-button:hover {
+        color: black;
+    }
+
+    .custom-button:hover::before {
+        width: 12em;
+    }
+
+    .custom-button svg {
+        color: #D4AF37;
+        transition: color 0.5s ease;
+    }
+
+    .custom-button:hover svg {
+        color: black;
     }
 </style> 
