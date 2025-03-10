@@ -391,17 +391,36 @@
     /* Mobile optimizations to reduce content height */
     @media (max-width: 767px) {
         .service-card .card p {
-            font-size: 0.95rem;
+            font-size: 0.9rem;
             margin-bottom: 0.5rem;
         }
         
         .service-card .card ul {
-            display: none; /* Hide bullet points on mobile */
+            margin-bottom: 0.5rem;
+        }
+        
+        .service-card .card ul li:nth-child(n+3) {
+            display: none; /* Hide bullet points after the first two on mobile */
         }
         
         .service-card .card h3 {
-            font-size: 1.5rem;
+            font-size: 1.4rem;
             margin-bottom: 0.5rem;
+        }
+        
+        .service-card .card .w-20 {
+            width: 3.5rem;
+            height: 3.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .service-card .card .w-20 svg {
+            width: 1.75rem;
+            height: 1.75rem;
+        }
+        
+        .services-viewport {
+            height: 65vh !important; /* Increase card height on mobile */
         }
     }
     
