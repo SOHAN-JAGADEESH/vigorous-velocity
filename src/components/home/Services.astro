@@ -377,9 +377,32 @@
         height: auto;
         display: flex;
         flex-direction: column;
-        align-items: center;
-        text-align: center;
+        align-items: flex-start;
+        text-align: left;
         padding: 1.5rem;
+    }
+    
+    .service-card .card h3,
+    .service-card .card .w-20 {
+        align-self: center;
+        text-align: center;
+    }
+    
+    /* Mobile optimizations to reduce content height */
+    @media (max-width: 767px) {
+        .service-card .card p {
+            font-size: 0.95rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .service-card .card ul {
+            display: none; /* Hide bullet points on mobile */
+        }
+        
+        .service-card .card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
     }
     
     @media (min-width: 768px) {
