@@ -7,7 +7,6 @@ import Testimonials from '../components/home/Testimonials.astro';
 import FeaturedProjects from '../components/home/FeaturedProjects.astro';
 import TechScroll from '../components/home/TechScroll.astro';
 import KeyPerformance from '../components/home/KeyPerformance.astro';
-import Testing from "../components/home/Testing.astro";
 ---
 <BaseLayout>
 <main>
@@ -20,3 +19,55 @@ import Testing from "../components/home/Testing.astro";
     <FeaturedProjects />
 </main>
 </BaseLayout>
+
+<style>
+  /* Add CSS to improve scroll performance */
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    /* Force hardware acceleration */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  
+  main > * {
+    /* Use content-visibility to improve rendering performance */
+    content-visibility: auto;
+    contain-intrinsic-size: 1px 5000px; /* Approximate size placeholder */
+  }
+  
+  /* Remove the will-change from all elements by default */
+  /* Only apply hardware acceleration to visible sections */
+  @media (prefers-reduced-motion: no-preference) {
+    .in-viewport {
+      will-change: transform;
+      transform: translateZ(0);
+    }
+  }
+</style>
+
+<script>
+  // Add intersection observer to only apply hardware acceleration to visible elements
+  document.addEventListener('DOMContentLoaded', () => {
+    const sections = document.querySelectorAll('main > *');
+    
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('in-viewport');
+        } else {
+          entry.target.classList.remove('in-viewport');
+        }
+      });
+    }, {
+      rootMargin: '100px 0px', // Start optimizing slightly before elements come into view
+      threshold: 0.01
+    });
+    
+    sections.forEach(section => {
+      observer.observe(section);
+    });
+  });
+</script>
