@@ -11,7 +11,7 @@
         <!-- Services Carousel Container -->
         <div class="services-container relative">
             <!-- Visible height container -->
-            <div class="services-viewport h-[55vh] relative">
+            <div class="services-viewport h-[55vh] md:h-[55vh] relative">
                 <!-- Card stack container -->
                 <div class="services-stack relative w-full h-full flex justify-center items-center">
                     <!-- Service 1 -->
@@ -196,7 +196,7 @@
             </div>
             
             <!-- CTA -->
-            <div class="mt-0 text-center">
+            <div class="mt-8 text-center">
                 <button class="custom-button">
                     Discuss Your Project
                 </button>
@@ -214,9 +214,13 @@
             
             let currentIndex = 0;
             const totalCards = serviceCards.length;
+            let isTransitioning = false;
             
             // Function to update card positions
             const updateCards = () => {
+                if (isTransitioning) return;
+                isTransitioning = true;
+                
                 serviceCards.forEach((card, index) => {
                     // Remove all position classes
                     card.classList.remove('active', 'prev', 'next', 'back', 'hidden-card');
@@ -229,11 +233,6 @@
                         card.classList.add('active');
                     } else if (position === 1 || position === (totalCards - 1)) {
                         card.classList.add(position === 1 ? 'next' : 'prev');
-                        card.addEventListener('click', () => {
-                            goToSlide(position === 1 ? 
-                                (currentIndex + 1) % totalCards : 
-                                (currentIndex - 1 + totalCards) % totalCards);
-                        }, { once: true });
                     } else if (position === 2 || position === (totalCards - 2)) {
                         card.classList.add('back');
                     } else {
@@ -244,27 +243,36 @@
                 // Update button states
                 prevButton.disabled = false;
                 nextButton.disabled = false;
+                
+                // Reset transition lock after animation completes
+                setTimeout(() => {
+                    isTransitioning = false;
+                }, 500);
             };
             
             // Go to specific slide
             const goToSlide = (index) => {
+                if (isTransitioning) return;
                 currentIndex = index;
                 updateCards();
             };
             
             // Handle navigation buttons
             prevButton.addEventListener('click', () => {
+                if (isTransitioning) return;
                 currentIndex = (currentIndex - 1 + totalCards) % totalCards;
                 updateCards();
             });
             
             nextButton.addEventListener('click', () => {
+                if (isTransitioning) return;
                 currentIndex = (currentIndex + 1) % totalCards;
                 updateCards();
             });
             
             // Handle keyboard navigation
             document.addEventListener('keydown', (e) => {
+                if (isTransitioning) return;
                 if (e.key === 'ArrowLeft') {
                     currentIndex = (currentIndex - 1 + totalCards) % totalCards;
                     updateCards();
@@ -274,6 +282,37 @@
                     updateCards();
                 }
             });
+            
+            // Handle touch events for swipe
+            let touchStartX = 0;
+            let touchEndX = 0;
+            
+            const handleTouchStart = (e) => {
+                touchStartX = e.touches[0].clientX;
+            };
+            
+            const handleTouchMove = (e) => {
+                touchEndX = e.touches[0].clientX;
+            };
+            
+            const handleTouchEnd = () => {
+                if (isTransitioning) return;
+                
+                const swipeThreshold = 50;
+                if (touchStartX - touchEndX > swipeThreshold) {
+                    // Swipe left
+                    currentIndex = (currentIndex + 1) % totalCards;
+                    updateCards();
+                } else if (touchEndX - touchStartX > swipeThreshold) {
+                    // Swipe right
+                    currentIndex = (currentIndex - 1 + totalCards) % totalCards;
+                    updateCards();
+                }
+            };
+            
+            document.querySelector('.services-viewport').addEventListener('touchstart', handleTouchStart, false);
+            document.querySelector('.services-viewport').addEventListener('touchmove', handleTouchMove, false);
+            document.querySelector('.services-viewport').addEventListener('touchend', handleTouchEnd, false);
             
             // Initialize the carousel
             updateCards();
@@ -320,25 +359,39 @@
     }
     
     .service-card {
-        width: 80%;
+        width: 90%;
         max-width: 800px;
         border-radius: 16px;
         background: rgba(0, 0, 0, 0.894);
         backdrop-filter: blur(10px);
         box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-        /* transition: all 2s cubic-bezier(0.23, .8, 0.25, 1), opacity .5s ease; */
-        transition: transform .8s ease-in-out, opacity 0.8s ease 0.3s;
+        transition: transform .5s ease-in-out, opacity 0.5s ease;
         will-change: transform, opacity;
         pointer-events: none; /* Disable interactions by default */
+        overflow-y: auto;
+        max-height: 100%;
     }
     
     .service-card .card {
-        min-height: 45vh;
+        min-height: auto;
+        height: auto;
         display: flex;
         flex-direction: column;
         align-items: center;
         text-align: center;
-        padding: 2rem;
+        padding: 1.5rem;
+    }
+    
+    @media (min-width: 768px) {
+        .service-card {
+            width: 80%;
+            transition: transform .8s ease-in-out, opacity 0.8s ease 0.3s;
+        }
+        
+        .service-card .card {
+            min-height: 45vh;
+            padding: 2rem;
+        }
     }
     
     /* Card positioning classes */
@@ -351,14 +404,26 @@
     
     .service-card.prev {
         z-index: 20;
-        transform: translateZ(-50px) translateX(-20%) scale(0.9);
-        opacity: .6;
+        transform: translateZ(-50px) translateX(-30%) scale(0.85);
+        opacity: .5;
     }
     
     .service-card.next {
         z-index: 20;
-        transform: translateZ(-50px) translateX(20%) scale(0.9);
-        opacity: .6;
+        transform: translateZ(-50px) translateX(30%) scale(0.85);
+        opacity: .5;
+    }
+    
+    @media (min-width: 768px) {
+        .service-card.prev {
+            transform: translateZ(-50px) translateX(-20%) scale(0.9);
+            opacity: .6;
+        }
+        
+        .service-card.next {
+            transform: translateZ(-50px) translateX(20%) scale(0.9);
+            opacity: .6;
+        }
     }
     
     .service-card.back {
